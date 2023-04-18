@@ -1,3 +1,4 @@
+local Util = require("lazyvim.util")
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 -- if true then return {} end
@@ -13,9 +14,13 @@ return {
     "tpope/vim-fugitive",
     lazy = false,
     init = function ()
-      vim.keymap.set("n", "<leader>gs", "<cmd>0G<cr>", { silent = true })
+      vim.keymap.set("n", "<leader>gf", "<cmd>0G<cr>", { silent = true })
     end
   },
+  {
+    "tpope/vim-rhubarb", lazy = false
+  },
+  { "tpope/vim-surround" },
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
@@ -147,6 +152,31 @@ return {
       { "<Leader>7", "<cmd>BufferLineGoToBuffer 7<CR>", desc = "Go to buffer 7" },
       { "<Leader>8", "<cmd>BufferLineGoToBuffer 8<CR>", desc = "Go to buffer 8" },
       { "<Leader>9", "<cmd>BufferLineGoToBuffer 9<CR>", desc = "Go to buffer 9" },
+    }
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)"}
+    }
+  },
+  {
+    "ggandor/leap.nvim", enabled = false,
+  },
+  {
+    "ggandor/flit.nvim", enabled = false,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
+    keys = {
+      {
+        "<A-j>",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
+        end,
+        desc = "Explorer NeoTree (root dir)",
+      },
     }
   }
 }
