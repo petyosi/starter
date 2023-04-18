@@ -177,7 +177,7 @@ return {
         end,
         desc = "Explorer NeoTree (root dir)",
       },
-    }, 
+    },
     opts = {
       window = {
         mappings = {

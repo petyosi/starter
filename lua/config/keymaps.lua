@@ -5,6 +5,7 @@
 vim.keymap.set("n", "<Tab>", ">>", {})
 vim.keymap.set("n", "<S-Tab>", "<<", {})
 vim.keymap.set("n", "<A-w>", "<cmd>wa<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>w", "<cmd>wa<CR>", { silent = true })
 
 vim.keymap.set("n", "<Leader>f", function()
   require("lazyvim.plugins.lsp.format").format({ force = true })
