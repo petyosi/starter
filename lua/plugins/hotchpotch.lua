@@ -21,14 +21,13 @@ return {
   { "tpope/vim-eunuch", lazy = false },
   { "tpope/vim-surround" },
   {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    init = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "tailwindcss"}
-      })
-    end
+    "NvChad/nvim-colorizer.lua",
+    opts = {
+      filetypes = { "*" },
+        user_default_options = {
+          tailwind = true
+        }
+    }
   },
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
@@ -53,9 +52,9 @@ return {
             preferences = {
               quoteStyle = "double",
             },
-            }
-          }
+          },
         },
+        tailwindcss = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -108,6 +107,7 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
+      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -144,6 +144,13 @@ return {
           end
         end, { "i", "s" }),
       })
+
+      -- original LazyVim kind icon formatter
+      local format_kinds = opts.formatting.format
+      opts.formatting.format = function(entry, item)
+        format_kinds(entry, item) -- add icons
+        return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+      end
     end,
   },
   {
