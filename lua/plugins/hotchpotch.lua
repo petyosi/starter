@@ -17,9 +17,8 @@ return {
       vim.keymap.set("n", "<leader>gf", "<cmd>0G<cr>", { silent = true })
     end
   },
-  {
-    "tpope/vim-rhubarb", lazy = false
-  },
+  { "tpope/vim-rhubarb", lazy = false },
+  { "tpope/vim-eunuch", lazy = false },
   { "tpope/vim-surround" },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -49,7 +48,14 @@ return {
       ---@type lspconfig.options
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
-        tsserver = {},
+        tsserver = {
+          init_options = {
+            preferences = {
+              quoteStyle = "double",
+            },
+            }
+          }
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -185,5 +191,14 @@ return {
         }
       }
     }
-  }
+  },
+  -- buffer remove
+  {
+    "echasnovski/mini.bufremove",
+    -- stylua: ignore
+    keys = {
+      { "<leader>d", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+    },
+  },
+
 }
