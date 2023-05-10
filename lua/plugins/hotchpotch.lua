@@ -123,7 +123,7 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.confirm({select = true })
+            cmp.confirm({select = false, cmp.ConfirmBehavior.replace })
             -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
             -- they way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
@@ -207,7 +207,6 @@ return {
       { "<leader>d", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
     },
   },
-
   {
     "rcarriga/nvim-notify",
     opts = {
