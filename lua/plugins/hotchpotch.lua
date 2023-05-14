@@ -212,5 +212,8 @@ return {
     opts = {
       background_colour = '#000000'
     }
+  }, 
+  {
+    "prisma/vim-prisma"
   }
 }
