@@ -170,7 +170,8 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)"}
+      { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)"},
+      { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers"}
     }
   },
   {
