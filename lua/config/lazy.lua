@@ -8,13 +8,6 @@ end
 
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = ".env.*",
-  callback = function()
-    vim.bo.filetype = "sh"
-  end,
-})
-
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
