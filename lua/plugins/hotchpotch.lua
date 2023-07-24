@@ -180,6 +180,7 @@ return {
     keys = {
       { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)"},
       { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers"},
+      { "<leader>sS", Util.telescope("lsp_dynamic_workspace_symbols", { symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module", "Struct", "Trait", "Field", "Property", "Variable", "Type", }, }), desc = "Goto Symbol (Workspace)", },
       { "<leader>/", function () require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Grep (root dir)" },
     },
     opts = function ()
@@ -203,7 +204,7 @@ return {
                 ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
               },
             },
-          } 
+          }
         }
       }
     end
