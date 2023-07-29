@@ -179,19 +179,44 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
       { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)"},
-      { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers"}
+      { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers"},
+      { "<leader>/", function () require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Grep (root dir)" },
     },
-    opts = {
-      extensions = {
-        fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-          -- the default case_mode is "smart_case"
+    opts = function ()
+      local lga_actions = require("telescope-live-grep-args.actions")
+
+      return {
+        extensions = {
+          fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+          },
+          live_grep_args = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            -- define mappings, e.g.
+            mappings = { -- extend mappings
+              i = {
+                ["<C-k>"] = lga_actions.quote_prompt(),
+                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              },
+            },
+          } 
         }
       }
-    }
+    end
+  },
+  {
+    'nvim-telescope/telescope-live-grep-args.nvim'
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    init = function()
+      require('telescope').load_extension('fzf')
+    end
   },
   {
     "ggandor/leap.nvim", enabled = false,
@@ -242,11 +267,4 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-    init = function()
-      require('telescope').load_extension('fzf')
-    end
-  }
 }

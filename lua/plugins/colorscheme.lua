@@ -19,9 +19,15 @@ return {
       "catppuccin/nvim",
       name = "catppuccin",
       opts = {
-        flavour = "frappe",
+        flavour = "mocha",
+
         transparent_background = true,
         term_colors = false,
+        dim_inactive = {
+          enabled = true, -- dims the background color of inactive window
+          shade = "dark",
+          percentage = 0.15, -- percentage of the shade to apply to the inactive window
+        },
         integrations = {
           cmp = true,
           gitsigns = true,
@@ -29,6 +35,10 @@ return {
           telescope = true,
           notify = true,
           mini = true,
+          flash = true,
+          mason = true,
+          noice = true,
+          which_key = true,
           -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
       },
