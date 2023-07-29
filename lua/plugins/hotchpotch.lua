@@ -224,5 +224,16 @@ return {
   }, 
   {
     "prisma/vim-prisma"
+  },
+  {
+    "folke/flash.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
   }
 }
