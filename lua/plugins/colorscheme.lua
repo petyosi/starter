@@ -20,7 +20,6 @@ return {
       name = "catppuccin",
       opts = {
         flavour = "mocha",
-
         transparent_background = true,
         term_colors = false,
         dim_inactive = {
