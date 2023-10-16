@@ -35,7 +35,7 @@ return {
     dependencies = {
       "jose-elias-alvarez/typescript.nvim",
       init = function()
-        require("lazyvim.util").on_attach(function(_, buffer)
+        require("lazyvim.util").lsp.on_attach(function(_, buffer)
           -- stylua: ignore
           vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
           vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
@@ -66,7 +66,7 @@ return {
           return true
         end,
         eslint = function()
-          require("lazyvim.util").on_attach(function(client)
+          require("lazyvim.util").lsp.on_attach(function(client)
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "tsserver" then
@@ -232,7 +232,7 @@ return {
       {
         "<A-j>",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
+          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root.get() })
         end,
         desc = "Explorer NeoTree (root dir)",
       },

@@ -27,3 +27,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.filetype = "sh"
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.config",
+  callback = function()
+    vim.bo.filetype = "yaml"
+  end,
+})
