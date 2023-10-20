@@ -232,7 +232,7 @@ return {
       {
         "<A-j>",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root.get() })
+          require("neo-tree.command").execute({ dir = require("lazyvim.util").root.get() })
         end,
         desc = "Explorer NeoTree (root dir)",
       },
