@@ -8,5 +8,5 @@ vim.keymap.set("n", "<A-w>", "<cmd>wa<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>w", "<cmd>wa<CR>", { silent = true })
 
 vim.keymap.set("n", "<Leader>f", function()
-  require("lazyvim.plugins.lsp.format").format({ force = true })
+  require("lazyvim.util").format({ force = true })
 end, { silent = false })
