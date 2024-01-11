@@ -10,3 +10,15 @@ vim.keymap.set("n", "<Leader>w", "<cmd>wa<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>f", function()
   require("lazyvim.util").format({ force = true })
 end, { silent = false })
+
+vim.keymap.set("n", "<A-.>", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<A-/>", function()
+  vim.lsp.buf.code_action({
+    context = {
+      only = {
+        "source",
+      },
+      diagnostics = {},
+    },
+  })
+end)
