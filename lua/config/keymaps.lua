@@ -22,3 +22,5 @@ vim.keymap.set("n", "<A-/>", function()
     },
   })
 end)
+
+vim.keymap.del("n", "<A-k>")
