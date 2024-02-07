@@ -11,6 +11,10 @@ vim.keymap.set("n", "<Leader>f", function()
   require("lazyvim.util").format({ force = true })
 end, { silent = false })
 
+vim.keymap.set("n", "<Leader>zf", function()
+  require("zen-mode").toggle({ window = { width = 0.7 } }) -- width will be 85% of the editor width }
+end, { silent = false })
+
 vim.keymap.set("n", "<A-.>", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<A-/>", function()
   vim.lsp.buf.code_action({
