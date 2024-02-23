@@ -5,7 +5,7 @@ return {
     opts = {
       transparent_background = true,
       devicons = true,
-      filter = "spectrum",
+      filter = "pro",
       background_clear = {
         -- "float_win",
         "toggleterm",
@@ -58,7 +58,7 @@ return {
     {
       "LazyVim/LazyVim",
       opts = {
-        colorscheme = "tokyonight",
+        colorscheme = "gruvbox",
       },
     },
   },

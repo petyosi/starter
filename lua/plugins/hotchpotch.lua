@@ -1,8 +1,6 @@
 local Util = require("lazyvim.util")
 -- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
--- if true then return {} end
-
+-- stylua: ignore if true then return {} end
 -- every spec file under config.plugins will be loaded automatically by lazy.nvim
 --
 -- In your plugin files, you can:
@@ -13,9 +11,9 @@ return {
   {
     "tpope/vim-fugitive",
     lazy = false,
-    init = function ()
+    init = function()
       vim.keymap.set("n", "<leader>gf", "<cmd>0G<cr>", { silent = true })
-    end
+    end,
   },
   { "tpope/vim-rhubarb", lazy = false },
   { "tpope/vim-eunuch", lazy = false },
@@ -24,21 +22,21 @@ return {
     "NvChad/nvim-colorizer.lua",
     opts = {
       filetypes = { "*" },
-        user_default_options = {
-          tailwind = true
-        }
-    }
+      user_default_options = {
+        tailwind = true,
+      },
+    },
   },
   {
     "folke/zen-mode.nvim",
     opts = {
       plugins = {
         tmux = { enabled = true }, -- disables the tmux statusline
-      }
+      },
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-    }
+    },
   },
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
@@ -65,6 +63,12 @@ return {
             },
           },
         },
+        eslint = {
+          settings = {
+            -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+            workingDirectories = { mode = "auto" },
+          },
+        },
         tailwindcss = {},
       },
       -- you can do any additional lsp server setup here
@@ -76,14 +80,39 @@ return {
           require("typescript").setup({ server = opts })
           return true
         end,
+
         eslint = function()
-          require("lazyvim.util").lsp.on_attach(function(client)
-            if client.name == "eslint" then
-              client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "tsserver" then
-              client.server_capabilities.documentFormattingProvider = false
+          local function get_client(buf)
+            return require("lazyvim.util").lsp.get_clients({ name = "eslint", bufnr = buf })[1]
+          end
+
+          local formatter = require("lazyvim.util").lsp.formatter({
+            name = "eslint: lsp",
+            primary = false,
+            priority = 200,
+            filter = "eslint",
+          })
+
+          -- Use EslintFixAll on Neovim < 0.10.0
+          if not pcall(require, "vim.lsp._dynamic") then
+            formatter.name = "eslint: EslintFixAll"
+            formatter.sources = function(buf)
+              local client = get_client(buf)
+              return client and { "eslint" } or {}
             end
-          end)
+            formatter.format = function(buf)
+              local client = get_client(buf)
+              if client then
+                local diag = vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+                if #diag > 0 then
+                  vim.cmd("EslintFixAll")
+                end
+              end
+            end
+          end
+
+          -- register the formatter with LazyVim
+          require("lazyvim.util").format.register(formatter)
         end,
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
@@ -134,7 +163,7 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.confirm({select = false, cmp.ConfirmBehavior.replace })
+            cmp.confirm({ select = false, cmp.ConfirmBehavior.replace })
           elseif has_words_before() then
             cmp.complete()
           else
@@ -184,26 +213,51 @@ return {
       { "<Leader>7", "<cmd>BufferLineGoToBuffer 7<CR>", desc = "Go to buffer 7" },
       { "<Leader>8", "<cmd>BufferLineGoToBuffer 8<CR>", desc = "Go to buffer 8" },
       { "<Leader>9", "<cmd>BufferLineGoToBuffer 9<CR>", desc = "Go to buffer 9" },
-    }
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)"},
-      { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers"},
-      { "<leader>sS", Util.telescope("lsp_dynamic_workspace_symbols", { symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module", "Struct", "Trait", "Field", "Property", "Variable", "Type", }, }), desc = "Goto Symbol (Workspace)", },
-      { "<leader>/", function () require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Grep (root dir)" },
+      { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)" },
+      { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers" },
+      {
+        "<leader>sS",
+        Util.telescope("lsp_dynamic_workspace_symbols", {
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+            "Variable",
+            "Type",
+          },
+        }),
+        desc = "Goto Symbol (Workspace)",
+      },
+      {
+        "<leader>/",
+        function()
+          require("telescope").extensions.live_grep_args.live_grep_args()
+        end,
+        desc = "Grep (root dir)",
+      },
     },
-    opts = function ()
+    opts = function()
       local lga_actions = require("telescope-live-grep-args.actions")
 
       return {
         extensions = {
           fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
           live_grep_args = {
@@ -215,26 +269,28 @@ return {
                 ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
               },
             },
-          }
-        }
+          },
+        },
       }
-    end
+    end,
   },
   {
-    'nvim-telescope/telescope-live-grep-args.nvim'
+    "nvim-telescope/telescope-live-grep-args.nvim",
   },
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     init = function()
-      require('telescope').load_extension('fzf')
-    end
+      require("telescope").load_extension("fzf")
+    end,
   },
   {
-    "ggandor/leap.nvim", enabled = false,
+    "ggandor/leap.nvim",
+    enabled = false,
   },
   {
-    "ggandor/flit.nvim", enabled = false,
+    "ggandor/flit.nvim",
+    enabled = false,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -251,10 +307,10 @@ return {
     opts = {
       window = {
         mappings = {
-          ["o"] = "toggle_node"
-        }
-      }
-    }
+          ["o"] = "toggle_node",
+        },
+      },
+    },
   },
   -- buffer remove
   {
@@ -267,8 +323,8 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
-      background_colour = '#000000'
-    }
+      background_colour = "#000000",
+    },
   },
   {
     "folke/flash.nvim",
