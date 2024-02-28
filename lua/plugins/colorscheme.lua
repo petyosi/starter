@@ -1,5 +1,6 @@
 return {
   { "sainnhe/everforest" },
+  { "sainnhe/sonokai" },
   {
     "loctvl842/monokai-pro.nvim",
     opts = {
@@ -58,7 +59,7 @@ return {
     {
       "LazyVim/LazyVim",
       opts = {
-        colorscheme = "gruvbox",
+        colorscheme = "sonokai",
       },
     },
   },
