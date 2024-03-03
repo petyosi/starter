@@ -34,3 +34,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.filetype = "yaml"
   end,
 })
+
+vim.g.sonokai_transparent_background = 2
+vim.g.sonokai_style = "espresso"
