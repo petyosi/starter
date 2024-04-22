@@ -5,7 +5,7 @@ return {
     "tpope/vim-fugitive",
     lazy = false,
     init = function()
-      vim.keymap.set("n", "<leader>gf", "<cmd>0G<cr>", { silent = true })
+      vim.keymap.set("n", "<A-l>", "<cmd>0G<cr>", { silent = true })
     end,
   },
   { "tpope/vim-rhubarb", lazy = false },
@@ -281,11 +281,30 @@ return {
   },
   {
     "folke/flash.nvim",
+    enabled = false,
     -- stylua: ignore
     keys = {
       { "s", mode = { "n", "x", "o" }, false },
       { "S", mode = { "n", "o", "x" }, false },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    keys = {
+      {
+        "<leader>cp",
+        ft = "markdown",
+        "<cmd>MarkdownPreviewToggle<cr>",
+        desc = "Markdown Preview",
+      },
+    },
+    config = function()
+      vim.cmd([[do FileType]])
+    end,
   },
 }
