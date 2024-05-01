@@ -8,7 +8,21 @@ return {
       vim.keymap.set("n", "<A-l>", "<cmd>0G<cr>", { silent = true })
     end,
   },
-  { "tpope/vim-rhubarb", lazy = false },
+  {
+    "tpope/vim-rhubarb",
+    lazy = false,
+    init = function()
+      local my_rhubarb = vim.api.nvim_create_augroup("my_rhubarb", { clear = true })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "gitcommit" },
+        callback = function()
+          vim.opt.completefunc = "rhubarb#Complete"
+        end,
+        group = my_rhubarb,
+      })
+    end,
+  },
   { "tpope/vim-eunuch", lazy = false },
   { "tpope/vim-surround" },
   {
