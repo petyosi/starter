@@ -252,6 +252,14 @@ return {
     end,
   },
   {
+    "ggandor/flit.nvim",
+    enabled = false,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    enabled = false,
+  },
+  {
     "ggandor/leap.nvim",
     enabled = false,
   },
@@ -320,5 +328,9 @@ return {
     config = function()
       vim.cmd([[do FileType]])
     end,
+  },
+  {
+    "prisma/vim-prisma",
+    lazy = false,
   },
 }

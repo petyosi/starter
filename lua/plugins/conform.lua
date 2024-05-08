@@ -22,6 +22,11 @@ return {
             return vim.fs.find({ "biome.json" }, { path = ctx.filename, upward = true })[1]
           end,
         },
+        shellcheck = {
+          condition = function(ctx)
+            return ctx.filename:match(".*%.sh$")
+          end,
+        },
       },
     },
   },
