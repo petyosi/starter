@@ -17,7 +17,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.coding.luasnip" },
+    -- { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "plugins" },
   },
   defaults = {

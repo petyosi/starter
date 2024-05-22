@@ -26,6 +26,5 @@ vim.keymap.set("n", "<A-/>", function()
     },
   })
 end)
-vim.lsp.inlay_hint.enable()
 
 vim.keymap.del("n", "<A-k>")

@@ -98,6 +98,7 @@ return {
     keys = function()
       return {}
     end,
+    enabled = false,
   },
   {
     "mason.nvim",
@@ -112,9 +113,11 @@ return {
   -- then: setup supertab in cmp
   {
     "hrsh7th/nvim-cmp",
+    version = false,
     dependencies = {
-      "hrsh7th/cmp-emoji",
-      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -124,13 +127,18 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      local luasnip = require("luasnip")
+      -- local luasnip = require("luasnip")
       local cmp = require("cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.confirm({ select = false, cmp.ConfirmBehavior.replace })
+            -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
+            cmp.confirm({ select = true })
+          elseif vim.snippet.active({ direction = 1 }) then
+            vim.schedule(function()
+              vim.snippet.jump(1)
+            end)
           elseif has_words_before() then
             cmp.complete()
           else
@@ -140,32 +148,25 @@ return {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
+          elseif vim.snippet.active({ direction = -1 }) then
+            vim.schedule(function()
+              vim.snippet.jump(-1)
+            end)
           else
             fallback()
           end
         end, { "i", "s" }),
-        ["<C-j>"] = cmp.mapping(function(fallback)
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
+        ["<C-j>"] = cmp.mapping(function()
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
         end, { "i", "s" }),
-        ["<C-k>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
+        ["<C-k>"] = cmp.mapping(function()
+          vim.schedule(function()
+            vim.snippet.jump(-1)
+          end)
         end, { "i", "s" }),
       })
-
-      -- original LazyVim kind icon formatter
-      local format_kinds = opts.formatting.format
-      opts.formatting.format = function(entry, item)
-        format_kinds(entry, item) -- add icons
-        return require("tailwindcss-colorizer-cmp").formatter(entry, item)
-      end
     end,
   },
   {
