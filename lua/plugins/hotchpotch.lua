@@ -334,4 +334,10 @@ return {
     "prisma/vim-prisma",
     lazy = false,
   },
+  {
+    "gbprod/yanky.nvim",
+    keys = {
+      { "<Leader>p", false },
+    },
+  },
 }
