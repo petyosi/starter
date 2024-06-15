@@ -186,11 +186,11 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "<Leader>p", Util.telescope("files"), desc = "Find files (root dir)" },
-      { "<Leader>o", Util.telescope("buffers"), desc = "Open buffers" },
+      { "<Leader>p", Util.pick("files"), desc = "Find files (root dir)" },
+      { "<Leader>o", Util.pick("buffers"), desc = "Open buffers" },
       {
         "<leader>sS",
-        Util.telescope("lsp_dynamic_workspace_symbols", {
+        Util.pick("lsp_dynamic_workspace_symbols", {
           symbols = {
             "Class",
             "Function",
@@ -293,7 +293,7 @@ return {
     "echasnovski/mini.bufremove",
     -- stylua: ignore
     keys = {
-      -- { "<leader>d", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<a-d>", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
     },
   },
   {
