@@ -8,21 +8,6 @@ return {
       vim.keymap.set("n", "<A-l>", "<cmd>0G<cr>", { silent = true })
     end,
   },
-  {
-    "tpope/vim-rhubarb",
-    lazy = false,
-    init = function()
-      local my_rhubarb = vim.api.nvim_create_augroup("my_rhubarb", { clear = true })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "gitcommit" },
-        callback = function()
-          vim.opt.completefunc = "rhubarb#Complete"
-        end,
-        group = my_rhubarb,
-      })
-    end,
-  },
   { "tpope/vim-eunuch", lazy = false },
   { "tpope/vim-surround" },
   {
@@ -190,22 +175,11 @@ return {
       { "<Leader>o", Util.pick("buffers"), desc = "Open buffers" },
       {
         "<leader>sS",
-        Util.pick("lsp_dynamic_workspace_symbols", {
-          symbols = {
-            "Class",
-            "Function",
-            "Method",
-            "Constructor",
-            "Interface",
-            "Module",
-            "Struct",
-            "Trait",
-            "Field",
-            "Property",
-            "Variable",
-            "Type",
-          },
-        }),
+        function()
+          require("telescope.builtin").lsp_workspace_symbols({
+            symbols = LazyVim.config.get_kind_filter(),
+          })
+        end,
         desc = "Goto Symbol (Workspace)",
       },
       {
