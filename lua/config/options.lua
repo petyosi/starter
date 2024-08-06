@@ -13,7 +13,6 @@ end
 
 vim.o.diffopt = add({
   "vertical",
-  "iwhite",
   "hiddenoff",
   "foldcolumn:0",
   "context:4",
