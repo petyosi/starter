@@ -1,13 +1,6 @@
 local Util = require("lazyvim.util")
 
 return {
-  {
-    "tpope/vim-fugitive",
-    lazy = false,
-    init = function()
-      vim.keymap.set("n", "<A-l>", "<cmd>0G<cr>", { silent = true })
-    end,
-  },
   { "tpope/vim-eunuch", lazy = false },
   { "tpope/vim-surround" },
   {
@@ -95,7 +88,7 @@ return {
               pylsp = {
                 plugins = {
                   pycodestyle = {
-                    ignore = { "E501" },
+                    ignore = { "E501", "W503" },
                     maxLineLength = 200,
                   },
                 },
@@ -266,10 +259,6 @@ return {
   },
   {
     "ggandor/flit.nvim",
-    enabled = false,
-  },
-  {
-    "kdheepak/lazygit.nvim",
     enabled = false,
   },
   {
