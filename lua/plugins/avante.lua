@@ -2,7 +2,7 @@ return {
   {
     "yetone/avante.nvim",
     enabled = true,
-    commit = "104484f17c9b8908ca190cb471c48772d7025a8e",
+    -- commit = "104484f17c9b8908ca190cb471c48772d7025a8e",
     event = "VeryLazy",
     build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
     opts = {
