@@ -7,15 +7,6 @@ return {
       { "<Leader>p", Util.pick("files"), desc = "Find files (root dir)" },
       { "<Leader>o", Util.pick("buffers"), desc = "Open buffers" },
       {
-        "<leader>sS",
-        function()
-          require("telescope.builtin").lsp_workspace_symbols({
-            symbols = LazyVim.config.get_kind_filter(),
-          })
-        end,
-        desc = "Goto Symbol (Workspace)",
-      },
-      {
         "<leader>/",
         function()
           require("telescope").extensions.live_grep_args.live_grep_args()

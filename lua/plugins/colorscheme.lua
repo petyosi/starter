@@ -56,11 +56,5 @@ return {
       lazy = true,
       opts = { style = "night", transparent = true },
     },
-    {
-      "LazyVim/LazyVim",
-      opts = {
-        colorscheme = "catppuccin",
-      },
-    },
   },
 }
