@@ -10,7 +10,7 @@ return {
     opts = {
       provider = "claude",
       claude = {
-        api_key_name = "cmd:op item get rcfbys54cj52wmntjqo37cqfry --fields label=credential --reveal",
+        api_key_name = "cmd:op item get rcfbys54cj52wmntjqo37cqfry --fields label=credential --reveal --account YXHOJT3EYZCZNLY7MB474NM574",
       },
       behavior = {
         auto_suggestions = false,
