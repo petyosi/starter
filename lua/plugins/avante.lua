@@ -1,28 +1,31 @@
 return {
   {
     "yetone/avante.nvim",
-    enabled = false,
-    -- commit = "104484f17c9b8908ca190cb471c48772d7025a8e",
+    enabled = true,
+    lazy = false,
+    version = false,
+    build = "make BUILD_FROM_SOURCE=true",
+    -- commit = "58e0165",
     event = "VeryLazy",
-    build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
     opts = {
-      provider = "copilot",
-      mappings = {
-        ask = "<leader>av",
+      provider = "claude",
+      claude = {
+        api_key_name = "cmd:op item get rcfbys54cj52wmntjqo37cqfry --fields label=credential --reveal",
       },
       behavior = {
-        auto_suggestions = true,
+        auto_suggestions = false,
       },
       -- add any opts here
     },
     dependencies = {
-      "echasnovski/mini.icons",
+      "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "zbirenbaum/copilot.lua",
-      --- The below is optional, make sure to setup it properly if you have lazy=true
+      --- The below dependencies are optional,
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       {
+        -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
@@ -30,9 +33,5 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
-  },
-  {
-    "HakonHarnes/img-clip.nvim",
-    event = "VeryLazy",
   },
 }

@@ -3,6 +3,7 @@
 -- Add any additional options here
 vim.opt.relativenumber = false
 vim.opt.linebreak = true
+vim.o.background = "dark"
 
 local function add(value, str, sep)
   sep = sep or ","

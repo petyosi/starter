@@ -10,7 +10,14 @@ return {
   },
   {
     "kdheepak/lazygit.nvim",
-    enabled = false,
+    enabled = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
   },
   {
     "sindrets/diffview.nvim",

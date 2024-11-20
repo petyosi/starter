@@ -2,6 +2,18 @@ return {
   { "sainnhe/everforest" },
   { "sainnhe/sonokai" },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      variant = "moon",
+      styles = {
+        bold = true,
+        italic = false,
+        transparency = true,
+      },
+    },
+  },
+  {
     "loctvl842/monokai-pro.nvim",
     opts = {
       transparent_background = true,
@@ -20,7 +32,7 @@ return {
       "catppuccin/nvim",
       name = "catppuccin",
       opts = {
-        flavour = "mocha",
+        flavour = "auto",
         transparent_background = true,
         term_colors = false,
         dim_inactive = {
@@ -48,7 +60,7 @@ return {
       priority = 1000,
       opts = {
         transparent_mode = true,
-        contrast = "soft",
+        contrast = "hard",
       },
     },
     {
