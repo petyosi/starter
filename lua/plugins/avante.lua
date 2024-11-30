@@ -5,7 +5,7 @@ return {
     lazy = false,
     version = false,
     build = "make BUILD_FROM_SOURCE=true",
-    -- commit = "58e0165",
+    commit = "58e0165",
     event = "VeryLazy",
     opts = {
       provider = "claude",

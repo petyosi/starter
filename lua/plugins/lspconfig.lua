@@ -5,6 +5,7 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
+        biome = {},
         pyright = {
           capabilities = (function()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
