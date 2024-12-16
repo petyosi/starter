@@ -1,6 +1,7 @@
 return {
   {
     "saghen/blink.cmp",
+    enabled = false,
     opts = {
       keymap = {
         preset = "super-tab",
