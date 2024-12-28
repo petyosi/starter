@@ -1,7 +1,7 @@
 return {
   {
     "m4xshen/hardtime.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     lazy = false,
     keys = {
@@ -11,23 +11,6 @@ return {
     opts = {},
   },
   { "tpope/vim-eunuch", lazy = false },
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      filetypes = { "*" },
-      user_default_options = {
-        tailwind = true,
-      },
-    },
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      plugins = {
-        tmux = { enabled = true }, -- disables the tmux statusline
-      },
-    },
-  },
   {
     "akinsho/bufferline.nvim",
     keys = {
@@ -68,12 +51,6 @@ return {
     -- stylua: ignore
     keys = {
       { "<A-d>", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-    },
-  },
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#000000",
     },
   },
 }

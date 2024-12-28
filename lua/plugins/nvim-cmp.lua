@@ -1,7 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    enabled = true,
+    enabled = false,
     version = false,
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -57,5 +57,15 @@ return {
         end, { "i", "s" }),
       })
     end,
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    enabled = false,
+    opts = {
+      filetypes = { "*" },
+      user_default_options = {
+        tailwind = true,
+      },
+    },
   },
 }
