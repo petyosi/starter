@@ -4,7 +4,7 @@ return {
   lazy = false,
   version = false,
   build = "make BUILD_FROM_SOURCE=true",
-  commit = "58e0165",
+  -- commit = "58e0165",
   opts = {
     provider = "claude",
     claude = {
@@ -14,8 +14,6 @@ return {
       auto_suggestions = false,
     },
   },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
