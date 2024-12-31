@@ -8,7 +8,9 @@ return {
       { "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"' },
       { "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"' },
     },
-    opts = {},
+    opts = {
+      disable_mouse = false,
+    },
   },
   { "tpope/vim-eunuch", lazy = false },
   {
@@ -43,14 +45,6 @@ return {
           ["o"] = "toggle_node",
         },
       },
-    },
-  },
-  -- buffer remove
-  {
-    "echasnovski/mini.bufremove",
-    -- stylua: ignore
-    keys = {
-      { "<A-d>", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
     },
   },
 }
