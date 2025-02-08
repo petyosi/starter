@@ -35,6 +35,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.json",
+  callback = function()
+    vim.bo.filetype = "jsonc"
+  end,
+})
+
 vim.g.sonokai_transparent_background = 2
 vim.g.sonokai_style = "espresso"
 vim.g.lazyvim_prettier_needs_config = true

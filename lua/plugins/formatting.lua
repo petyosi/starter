@@ -11,6 +11,8 @@ return {
         javascript = { "biome-check", "prettier", stop_after_first = true },
         typescript = { "biome-check", "prettier", stop_after_first = true },
         typescriptreact = { "biome-check", "prettier", stop_after_first = true },
+        json = { "biome-check", "prettier", stop_after_first = true },
+        jsonc = { "biome-check", "prettier", stop_after_first = true },
       },
     },
   },
