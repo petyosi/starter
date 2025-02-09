@@ -33,6 +33,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.ai.copilot" },
     { import = "plugins" },
+    { import = "lazyvim.plugins.extras.editor.snacks_picker" },
+    { import = "lazyvim.plugins.extras.editor.snacks_explorer" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

@@ -27,24 +27,4 @@ return {
       { "<Leader>9", "<cmd>BufferLineGoToBuffer 9<CR>", desc = "Go to buffer 9" },
     },
   },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    cmd = "Neotree",
-    keys = {
-      {
-        "<A-j>",
-        function()
-          require("neo-tree.command").execute({ dir = require("lazyvim.util").root.get() })
-        end,
-        desc = "Explorer NeoTree (root dir)",
-      },
-    },
-    opts = {
-      window = {
-        mappings = {
-          ["o"] = "toggle_node",
-        },
-      },
-    },
-  },
 }
