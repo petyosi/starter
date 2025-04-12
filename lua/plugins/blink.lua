@@ -12,6 +12,11 @@ return {
           enabled = false,
         },
       },
+      sources = {
+        per_filetype = {
+          codecompanion = { "codecompanion" },
+        },
+      },
     },
   },
 }

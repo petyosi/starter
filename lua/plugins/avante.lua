@@ -4,6 +4,7 @@ return {
   lazy = false,
   version = false,
   build = "make BUILD_FROM_SOURCE=true",
+  enabled = false,
   -- commit = "58e0165",
   opts = {
     provider = "claude",
