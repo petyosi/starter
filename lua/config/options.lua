@@ -44,4 +44,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 vim.g.sonokai_transparent_background = 2
 vim.g.sonokai_style = "espresso"
+
 vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_eslint_auto_format = true

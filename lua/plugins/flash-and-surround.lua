@@ -22,6 +22,7 @@ return {
   {
     "tpope/vim-surround",
     lazy = false,
+    vscode = true,
   },
   {
     "echasnovski/mini.surround",

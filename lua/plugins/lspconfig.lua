@@ -29,6 +29,10 @@ return {
             client.server_capabilities.hoverProvider = false
           end,
         },
+        vtsls = {
+          root_dir = require("lspconfig").util.root_pattern("package.json"),
+          single_file_support = false,
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
