@@ -3,13 +3,16 @@ return {
   event = "VeryLazy",
   lazy = false,
   version = false,
-  build = "make BUILD_FROM_SOURCE=true",
-  enabled = false,
+  build = "make",
+  enabled = true,
   -- commit = "58e0165",
   opts = {
     provider = "claude",
-    claude = {
-      api_key_name = "cmd:op item get rcfbys54cj52wmntjqo37cqfry --fields label=credential --reveal --account YXHOJT3EYZCZNLY7MB474NM574",
+    auto_suggestions_provider = "claude",
+    providers = {
+      claude = {
+        api_key_name = "cmd:op item get rcfbys54cj52wmntjqo37cqfry --fields label=credential --reveal --account YXHOJT3EYZCZNLY7MB474NM574",
+      },
     },
     behavior = {
       auto_suggestions = false,

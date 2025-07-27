@@ -9,6 +9,10 @@ return {
     end,
   },
   {
+    "tpope/vim-rhubarb",
+    lazy = false,
+  },
+  {
     "kdheepak/lazygit.nvim",
     enabled = true,
     cmd = {

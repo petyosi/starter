@@ -1,5 +1,6 @@
 return {
   "olimorris/codecompanion.nvim",
+  enabled = false,
   opts = {
     adapters = {
       anthropic = function()
