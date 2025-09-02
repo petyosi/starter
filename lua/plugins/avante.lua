@@ -4,7 +4,7 @@ return {
   lazy = false,
   version = false,
   build = "make",
-  enabled = true,
+  enabled = false,
   -- commit = "58e0165",
   opts = {
     provider = "claude",

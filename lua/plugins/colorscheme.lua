@@ -16,7 +16,12 @@ return {
     name = "kanagawa",
     opts = {
       transparent = true,
-      theme = "dragon",
+      theme = "wave",
     },
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
   },
 }
