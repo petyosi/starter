@@ -15,6 +15,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.lsp.set_log_level("OFF")
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
