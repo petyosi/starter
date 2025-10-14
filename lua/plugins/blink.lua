@@ -1,8 +1,6 @@
 return {
   {
     "saghen/blink.cmp",
-    version = "1.*",
-    tag = "v1.3.1",
     enabled = true,
     opts = {
       keymap = {
@@ -11,12 +9,7 @@ return {
       },
       completion = {
         ghost_text = {
-          enabled = false,
-        },
-      },
-      sources = {
-        per_filetype = {
-          codecompanion = { "codecompanion" },
+          enabled = true,
         },
       },
     },
