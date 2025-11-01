@@ -14,7 +14,7 @@ return {
         json = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         jsonc = { "biome-check", "prettierd", "prettier", stop_after_first = true },
         css = { "biome-check", "prettierd", "prettier", stop_after_first = true },
-        markdown = { "prettierd", "prettier", "markdownlint-cli2", stop_after_first = true },
+        markdown = { "prettierd", "prettier", "markdownlint-cli2", stop_after_first = false },
       },
     },
   },
