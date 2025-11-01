@@ -24,6 +24,7 @@ return {
         input = {
           keys = {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<C-q>"] = { "<C-\\><C-n>", mode = "i", expr = true },
           },
         },
       },
