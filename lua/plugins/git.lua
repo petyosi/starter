@@ -13,17 +13,6 @@ return {
     lazy = false,
   },
   {
-    "kdheepak/lazygit.nvim",
-    enabled = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-  },
-  {
     "sindrets/diffview.nvim",
     enabled = true,
     init = function()

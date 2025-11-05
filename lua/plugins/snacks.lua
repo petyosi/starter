@@ -9,9 +9,16 @@ return {
     { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
     { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
     { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
+    { "<leader>gg", function() Snacks.lazygit.open() end, desc = "Open Lazygit" },
+    { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log" },
   },
   ---@type snacks.Config
   opts = {
+    gh = {
+      -- Requires gh cli to be installed and authenticated
+      enabled = true,
+    },
+    lazygit = {},
     picker = {
       sources = {
         explorer = {
