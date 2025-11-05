@@ -24,8 +24,4 @@ return {
     lazy = false,
     vscode = true,
   },
-  {
-    "nvim-mini/mini.surround",
-    enabled = false,
-  },
 }
