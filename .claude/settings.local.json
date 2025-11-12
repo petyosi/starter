@@ -3,7 +3,10 @@
     "allow": [
       "Bash(nvim:*)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)",
+      "WebFetch(domain:oxc.rs)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []
