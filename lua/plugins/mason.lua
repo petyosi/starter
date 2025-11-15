@@ -18,6 +18,7 @@ return {
         -- JavaScript/TypeScript
         "vtsls",
         "biome",
+        "oxlint",
         "prettier",
         "eslint-lsp",
         "js-debug-adapter",
