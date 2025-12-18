@@ -32,9 +32,7 @@ return {
         "json-lsp",
 
         -- Markdown
-        "marksman",
         "markdownlint-cli2",
-        "markdown-toc",
 
         -- AI
         "copilot-language-server",

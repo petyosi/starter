@@ -20,6 +20,11 @@ return {
     },
     lazygit = {},
     picker = {
+      actions = {
+        sidekick_send = function(...)
+          return require("sidekick.cli.picker.snacks").send(...)
+        end,
+      },
       sources = {
         explorer = {
           win = {
@@ -36,6 +41,11 @@ return {
           keys = {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
             -- ["<C-q>"] = { "<C-\\><C-n>", mode = "i", expr = true },
+            --
+            ["<a-a>"] = {
+              "sidekick_send",
+              mode = { "n", "i" },
+            },
           },
         },
       },

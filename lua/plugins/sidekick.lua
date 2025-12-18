@@ -1,6 +1,9 @@
 return {
   "folke/sidekick.nvim",
   opts = {
+    nes = {
+      enabled = false,
+    },
     -- add any options here
     cli = {
       mux = {
@@ -8,6 +11,7 @@ return {
         enabled = true,
       },
       win = {
+        -- layout = "float",
         keys = {},
       },
     },
@@ -34,6 +38,11 @@ return {
     },
     {
       "<leader>aa",
+      function() require("sidekick.cli").toggle() end,
+      desc = "Sidekick Toggle CLI",
+    },
+    {
+      "<A-a>",
       function() require("sidekick.cli").toggle() end,
       desc = "Sidekick Toggle CLI",
     },

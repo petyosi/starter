@@ -5,6 +5,8 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
+        marksman = { enabled = false },
+        markdownlint = {},
         pyright = {
           capabilities = (function()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -27,6 +29,15 @@ return {
           on_attach = function(client, _)
             client.server_capabilities.hoverProvider = false
           end,
+        },
+        cssls = {
+          settings = {
+            css = {
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+          },
         },
       },
       -- you can do any additional lsp server setup here

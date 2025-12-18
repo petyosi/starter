@@ -23,7 +23,7 @@ return {
     linters = {
       -- https://github.com/LazyVim/LazyVim/discussions/4094#discussioncomment-10178217
       ["markdownlint-cli2"] = {
-        args = { "--config", cfg_path, "--" },
+        -- args = { "--config", cfg_path, "--" },
       },
     },
   },
