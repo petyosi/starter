@@ -28,7 +28,9 @@ vim.keymap.set("n", "<A-/>", function()
   })
 end)
 
-vim.keymap.del("n", "<A-k>")
+if not vim.g.vscode then
+  vim.keymap.del("n", "<A-k>")
+end
 
 -- vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 -- vim.keymap.set({ "n", "v" }, "<Leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
