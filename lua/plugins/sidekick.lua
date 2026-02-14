@@ -11,10 +11,10 @@ return {
         backend = "tmux",
         enabled = true,
       },
-    win = {
-      -- layout = "float",
-      keys = {},
-    },
+      win = {
+        -- layout = "float",
+        keys = {},
+      },
     },
   },
   -- stylua: ignore
@@ -80,7 +80,7 @@ return {
     -- Example of a keybinding to open Claude directly
     {
       "<leader>ac",
-      function() require("sidekick.cli").toggle({ name = "opencode", focus = true }) end,
+      function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
       desc = "Sidekick Toggle opencode",
     },
   },

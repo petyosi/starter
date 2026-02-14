@@ -1,10 +1,9 @@
 return {
-  "esmuellert/vscode-diff.nvim",
-  branch = "next",
+  "esmuellert/codediff.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
   cmd = "CodeDiff",
   config = function()
-    require("vscode-diff").setup({
+    require("codediff").setup({
       -- Keymaps in diff view
       keymaps = {
         view = {
@@ -22,6 +21,20 @@ return {
           hover = "K", -- Show file diff preview
           refresh = "R", -- Refresh git status
           toggle_view_mode = "i", -- Toggle between 'list' and 'tree' views
+          toggle_stage = "-", -- Stage/unstage selected file
+          stage_all = "S", -- Stage all files
+          unstage_all = "U", -- Unstage all files
+          restore = "X", -- Discard changes (restore file)
+        },
+        conflict = {
+          accept_incoming = "<leader>ct", -- Accept incoming (theirs/left) change
+          accept_current = "<leader>co", -- Accept current (ours/right) change
+          accept_both = "<leader>cb", -- Accept both changes (incoming first)
+          discard = "<leader>cx", -- Discard both, keep base
+          next_conflict = "]x", -- Jump to next conflict
+          prev_conflict = "[x", -- Jump to previous conflict
+          diffget_incoming = "2do", -- Get hunk from incoming (left/theirs) buffer
+          diffget_current = "3do", -- Get hunk from current (right/ours) buffer
         },
       },
     })
