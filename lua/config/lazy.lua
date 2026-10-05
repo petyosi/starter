@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.lsp.set_log_level("OFF")
+vim.lsp.log.set_level("OFF")
 
 require("lazy").setup({
   spec = {
@@ -23,7 +23,7 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.typescript.oxc" },
-    { import = "lazyvim.plugins.extras.lang.typescript.tsgo" },
+    { import = "lazyvim.plugins.extras.lang.typescript.tsc" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
